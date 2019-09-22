@@ -1,22 +1,27 @@
 #This is a python script that will make pgn files
 import time
 import os
+import sys
 
 os.system('clear')
 
+global event
+global date
+
 event = input("Event: ")
-date = input("(yyyy.mm.dd) Date: " )
-roundd = input("Round: ")
+date = input("Date (yyyy.mm.dd) : " )
+roundd = (input("Round: ") or "1")
 white = input("White: ")
 black = input("Black: ")
-result = input("(Ex: 1-0, 1/2 if draw) Result : ")
-white_elo = (input("(\"enter\" for blank) White Elo: ") or "-")
-black_elo = (input("(\"enter\" for blank) Black Elo: ") or "-")
+result = input("Result (1-0, 0-1, 1/2 if draw): ")
+white_elo = (input("White Elo: ") or "-")
+black_elo = (input("Black Elo: ") or "-")
 
 os.system('clear') 
 time.sleep(1)
 
-list = [ event, date, roundd, black, result, white_elo, black_elo]
+Vlist = [event, date, roundd, white, black, result, white_elo, black_elo]
+list = [ "Event", "Date", "Round", "White", "Black", "Result", "White Elo", "Black Elo"]
 
 def user_input(event, date, roundd, white, black, result, white_elo, black_elo):
 	print("(1) [Event ""\""+event+"\"]")
@@ -31,19 +36,94 @@ def user_input(event, date, roundd, white, black, result, white_elo, black_elo):
 
 
 
-
+#tags = user_input(event, date, roundd, white, black, result, white_elo, black_elo)
 
 
 x = 1
 while(x == 1):
 	user_input(event, date, roundd, white, black, result, white_elo, black_elo)
-	print ("\n")
+	print ("")
 	answer = (input("Is everything above correct? (yes/no): ") or "yes")
 	if answer.casefold() in ['y', 'yes']:
 		x +=1
 
 	elif answer.casefold() in ['n', 'no']:
-		print ('lemme fix that')
+		x = 1
+		while(x == 1):
+			os.system('clear')
+			user_input(event, date, roundd, white, black, result, white_elo, black_elo)
+			print('\n(0) to continue')
+			selection = int(input('\nWhich tag would you like to fix?: ' ) or 0)
+			"""
+			if selection >=1 and selection <=8:
+				print ('\n('+ str(selection) + ') ' + '[' + str(list[selection - 1]) + '] ' +  '\"' + Vlist[selection-1] + '\"')
+				variable_change = input('\nPlease enter new value: ')
+				Vlist[selection - 1] = variable_change 
+				print (Vlist[selection - 1])
+				time.sleep (2)
+				"""
+			if selection == 1:
+				print ('\n('+ str(selection) + ') ' + '[' + str(list[selection - 1]) + '] ' +  '\"' + event + '\"')
+				variable_change = input('\nPlease enter new value: ')
+				event = variable_change
+				print ("Event set to " '\"' + event + '\"')
+				time.sleep(2)
+
+			elif selection == 2:
+				print ('\n('+ str(selection) + ') ' + '[' + str(list[selection - 1]) + '] ' +  '\"' + date + '\"')
+				variable_change = input('\nPlease enter new value: ')
+				date = variable_change
+				print ("Date set to " '\"' + date + '\"')
+				time.sleep(2)
+
+			elif selection == 3:
+				print ('\n('+ str(selection) + ') ' + '[' + str(list[selection - 1]) + '] ' +  '\"' + roundd + '\"')
+				variable_change = input('\nPlease enter new value: ')
+				roundd = variable_change
+				print ("Round set to " '\"' + roundd + '\"')
+				time.sleep(2)
+
+			elif selection == 4:
+				print ('\n('+ str(selection) + ') ' + '[' + str(list[selection - 1]) + '] ' +  '\"' + white + '\"')
+				variable_change = input('\nPlease enter new value: ')
+				white = variable_change
+				print ("White set to " '\"' + white + '\"')
+				time.sleep(2)
+
+			elif selection == 5:
+				print ('\n('+ str(selection) + ') ' + '[' + str(list[selection - 1]) + '] ' +  '\"' + black + '\"')
+				variable_change = input('\nPlease enter new value: ')
+				black = variable_change
+				print ("Black set to " '\"' + black + '\"')
+				time.sleep(2)
+
+			elif selection == 6:
+				print ('\n('+ str(selection) + ') ' + '[' + str(list[selection - 1]) + '] ' +  '\"' + result + '\"')
+				variable_change = input('\nPlease enter new value: ')
+				result = variable_change
+				print ("Result set to " '\"' + result + '\"')
+				time.sleep(2)
+
+			elif selection == 7:
+				print ('\n('+ str(selection) + ') ' + '[' + str(list[selection - 1]) + '] ' +  '\"' + white_elo + '\"')
+				variable_change = input('\nPlease enter new value: ')
+				white_elo = variable_change
+				print ("White Elo set to " '\"' + white_elo + '\"')
+				time.sleep(2)
+
+			elif selection == 8:
+				print ('\n('+ str(selection) + ') ' + '[' + str(list[selection - 1]) + '] ' +  '\"' + black_elo + '\"')
+				variable_change = input('\nPlease enter new value: ')
+				black_elo = variable_change
+				print ("Black Elo set to " '\"' + black_elo + '\"')
+				time.sleep(2)
+
+				
+
+			elif selection == 0:
+				x += 1
+
+
 
 	else:
 		print ('Please enter a valid answer')
