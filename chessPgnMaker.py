@@ -5,8 +5,7 @@ import sys
 
 os.system('clear')
 
-global event
-global date
+tags_given = 8
 
 event = input("Event: ")
 date = input("Date (yyyy.mm.dd) : " )
@@ -130,7 +129,32 @@ while(x == 1):
 		time.sleep (2)
 		os.system('clear')
 
-print ('out of loop')
+
+print ('Making PGN file')
+time.sleep (2)
+
+
+
+#a = [event, date, roundd, white, black, result, white_elo, black_elo]
+#b = ['Event', 'Date', 'Round', 'White', 'Black', 'Result', 'White Elo', 'Black Elo']
+
+save_path = ('/Users/landsome/Documents/Chess Games')
+name_of_file = (white + ' v ' + black)
+completeName = os.path.join ( save_path, name_of_file + ".pgn")
+
+f = open (completeName, "w+")
+f.write('[Event '  + '\"' + event + '\"]')
+f.write('\n[Date '  + '\"' + date + '\"]')
+f.write('\n[Round '  + '\"' + roundd + '\"]')
+f.write('\n[White '  + '\"' + white + '\"]')
+f.write('\n[Black '  + '\"' + black + '\"]')
+f.write('\n[Result '  + '\"' + result + '\"]')
+f.write('\n[White Elo '  + '\"' + white_elo + '\"]')
+f.write('\n[Black Elo '  + '\"' + black_elo + '\"]')
+f.close()
+
+print ('\"' + name_of_file + '\"' +  ' saved to ' + save_path)
+
 
 	
 
