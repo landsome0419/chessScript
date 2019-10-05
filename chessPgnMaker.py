@@ -13,8 +13,8 @@ roundd = (input("Round: ") or "1")
 white = input("White: ")
 black = input("Black: ")
 result = input("Result (1-0, 0-1, 1/2 if draw): ")
-white_elo = (input("White Elo: ") or "-")
-black_elo = (input("Black Elo: ") or "-")
+white_elo = (input("WhiteElo: ") or "-")
+black_elo = (input("BlackElo: ") or "-")
 
 os.system('clear') 
 time.sleep(1)
@@ -29,8 +29,8 @@ def user_input(event, date, roundd, white, black, result, white_elo, black_elo):
 	print("(4) [White ""\""+white+"\"]")
 	print("(5) [Black ""\""+black+"\"]")
 	print("(6) [Result ""\""+result+"\"]")
-	print("(7) [White Elo ""\""+white_elo+"\"]")
-	print("(8) [Black Elo ""\""+black_elo+"\"]")
+	print("(7) [WhiteElo ""\""+white_elo+"\"]")
+	print("(8) [BlackElo ""\""+black_elo+"\"]")
 	return 
 
 
@@ -107,14 +107,14 @@ while(x == 1):
 				print ('\n('+ str(selection) + ') ' + '[' + str(list[selection - 1]) + '] ' +  '\"' + white_elo + '\"')
 				variable_change = input('\nPlease enter new value: ')
 				white_elo = variable_change
-				print ("White Elo set to " '\"' + white_elo + '\"')
+				print ("WhiteElo set to " '\"' + white_elo + '\"')
 				time.sleep(2)
 
 			elif selection == 8:
 				print ('\n('+ str(selection) + ') ' + '[' + str(list[selection - 1]) + '] ' +  '\"' + black_elo + '\"')
 				variable_change = input('\nPlease enter new value: ')
 				black_elo = variable_change
-				print ("Black Elo set to " '\"' + black_elo + '\"')
+				print ("BlackElo set to " '\"' + black_elo + '\"')
 				time.sleep(2)
 
 				
@@ -149,8 +149,8 @@ f.write('\n[Round '  + '\"' + roundd + '\"]')
 f.write('\n[White '  + '\"' + white + '\"]')
 f.write('\n[Black '  + '\"' + black + '\"]')
 f.write('\n[Result '  + '\"' + result + '\"]')
-f.write('\n[White Elo '  + '\"' + white_elo + '\"]')
-f.write('\n[Black Elo '  + '\"' + black_elo + '\"]')
+f.write('\n[WhiteElo '  + '\"' + white_elo + '\"]')
+f.write('\n[BlackElo '  + '\"' + black_elo + '\"]')
 f.close()
 
 print ('\"' + name_of_file + '\"' +  ' saved to ' + save_path)
