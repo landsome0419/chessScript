@@ -2,6 +2,7 @@
 import time
 import os
 import sys
+import pickle
 from pathlib import Path
 
 
@@ -11,6 +12,8 @@ os.system('clear')
 
 # Define Save Path
 directory = '~/Documents/Chess Games'
+# Dump directory variable from pickle
+directory = pickle.load( open( 'path.pkl', 'rb'))
 print ('Save Path: ' + directory)
 print ("")
 
@@ -48,7 +51,7 @@ def user_input(event, date, roundd, white, black, result, white_elo, black_elo, 
 
 #tags = user_input(event, date, roundd, white, black, result, white_elo, black_elo)
 
-
+# Menu for tag changes
 x = 1
 while(x == 1):
 	user_input(event, date, roundd, white, black, result, white_elo, black_elo, directory)
@@ -132,7 +135,7 @@ while(x == 1):
 				print ('Save Path: ' + directory)
 				variable_change = input('\nPlease enter a new path: ')
 				directory = variable_change
-				print ("Save Path set to " + directory)
+				print ("Save Path set to " + directory) 
 				time.sleep(2)
 
 				
@@ -152,6 +155,13 @@ while(x == 1):
 #b = ['Event', 'Date', 'Round', 'White', 'Black', 'Result', 'White Elo', 'Black Elo']
 
 
+# Save directory variable to pickle
+pickle.dump(directory, open( 'path.pkl', 'wb' ) )
+print("")
+print('Saved ' + directory + ' to path.pkl')
+time.sleep(1)
+
+# If directory does not exist, create one 
 time.sleep (1)
 if os.path.isdir(os.path.expanduser(directory)) == True:
 	print("")
@@ -166,6 +176,8 @@ else:
 
 
 
+
+# Make PGN file
 name_of_file = (white + ' v ' + black)
 completeName = os.path.join (os.path.expanduser(directory), name_of_file + ".pgn")
 print("")
